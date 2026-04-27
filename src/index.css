@@ -1,0 +1,243 @@
+@import "tailwindcss";
+
+/* ========================= */
+/* DESIGN TOKENS */
+/* ========================= */
+
+:root {
+  --primary: 79 70 229;
+  --primary-light: 129 140 248;
+  --primary-dark: 67 56 202;
+
+  --accent: 6 182 212;
+
+  --bg: 248 250 252;
+  --bg-secondary: 241 245 249;
+
+  --text: 15 23 42;
+  --text-muted: 100 116 139;
+
+  --border: 226 232 240;
+
+  --success: 34 197 94;
+  --danger: 239 68 68;
+}
+
+.dark {
+  --bg: 15 23 42;
+  --bg-secondary: 30 41 59;
+
+  --text: 241 245 249;
+  --text-muted: 148 163 184;
+
+  --border: 51 65 85;
+}
+
+/* ========================= */
+/* BASE */
+/* ========================= */
+
+@layer base {
+  * {
+    border-color: rgb(var(--border));
+  }
+
+  body {
+    background: rgb(var(--bg));
+    color: rgb(var(--text));
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    @apply transition-colors duration-300;
+  }
+
+  main {
+    @apply min-h-screen;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl font-bold tracking-tight;
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl font-semibold;
+  }
+
+  h3 {
+    @apply text-xl font-semibold;
+  }
+
+  p {
+    color: rgb(var(--text-muted));
+    @apply text-sm md:text-base;
+  }
+
+  header {
+    @apply sticky top-0 z-50 backdrop-blur-md;
+    background: rgb(var(--bg) / 0.7);
+    border-bottom: 1px solid rgb(var(--border));
+  }
+}
+
+/* ========================= */
+/* COMPONENTS */
+/* ========================= */
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .card {
+    @apply rounded-2xl p-6 shadow-sm border transition;
+    background: rgb(var(--bg-secondary));
+    border-color: rgb(var(--border));
+  }
+
+  /* BUTTONS */
+
+  .btn {
+    @apply inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ease-in-out;
+  }
+
+  .btn-primary {
+    background: rgb(var(--primary));
+    color: white;
+  }
+
+  .btn-primary:hover {
+    transform: scale(1.03);
+    background: rgb(var(--primary-light));
+  }
+
+  .btn-secondary {
+    @apply border;
+    border-color: rgb(var(--border));
+    color: rgb(var(--text));
+  }
+
+  .btn-secondary:hover {
+    background: rgb(var(--bg-secondary));
+  }
+
+  /* INPUTS */
+
+  .input {
+    @apply w-full px-3 py-2 text-sm rounded-md border outline-none transition;
+
+    border-color: rgb(var(--border));
+    background: rgb(var(--bg));
+    color: rgb(var(--text));
+  }
+
+  .input:focus {
+    outline: 2px solid rgb(var(--primary));
+  }
+
+  /* BADGE */
+
+  .badge {
+    @apply inline-block px-2 py-1 text-xs rounded-md;
+    background: rgb(var(--bg-secondary));
+    color: rgb(var(--text-muted));
+  }
+}
+
+/* ========================= */
+/* UTILITIES */
+/* ========================= */
+
+.text-primary {
+  color: rgb(var(--primary));
+}
+
+.text-muted {
+  color: rgb(var(--text-muted));
+}
+
+.bg-primary {
+  background: rgb(var(--primary));
+}
+
+.bg-main {
+  background: rgb(var(--bg));
+}
+
+.bg-secondary {
+  background: rgb(var(--bg-secondary));
+}
+
+.border-default {
+  border-color: rgb(var(--border));
+}
+
+/* GRADIENT TEXT */
+
+.text-gradient {
+  background: linear-gradient(
+    to right,
+    rgb(var(--primary)),
+    rgb(var(--accent))
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* NAV */
+
+.nav-link {
+  @apply relative text-sm transition;
+  color: rgb(var(--text-muted));
+}
+
+.nav-link:hover {
+  color: rgb(var(--text));
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0%;
+  background: rgb(var(--primary));
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: rgb(var(--primary));
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* GLASS EFFECT */
+
+.glass {
+  background: rgb(var(--bg) / 0.6);
+  backdrop-filter: blur(12px);
+}
+
+/* FLEX HELPERS */
+
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+/* GRID AUTO */
+
+.grid-auto {
+  @apply grid gap-4;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
