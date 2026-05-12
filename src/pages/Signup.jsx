@@ -60,7 +60,7 @@ const Signup = () => {
     return Object.keys(newErrors).length ? newErrors : null;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const validationErrors = validateForm();
@@ -71,12 +71,41 @@ const Signup = () => {
 
     setLoading(true);
 
-    setTimeout(() => {
-      console.log(formData);
+    try {
+      const response = await fetch("http://localhost:8080/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setErrors({
+          server: data.error || "Signup failed",
+        });
+
+        setLoading(false);
+        return;
+      }
+
+      console.log(data);
+
       setIsLoggedIn(true);
+
       navigate("/dashboard");
+    } catch (error) {
+      console.error("Signup error:", error);
+      setErrors({ server: "An error occurred. Please try again." });
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -116,7 +145,7 @@ const Signup = () => {
               <form onSubmit={handleSubmit} className="mt-10 space-y-5">
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Name</label>
+                  <label className="text-sm text-gray-400 font-medium">Name</label>
                   <input
                     type="text"
                     name="name"
@@ -129,7 +158,7 @@ const Signup = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Email</label>
+                  <label className="text-sm text-gray-400 font-medium">Email</label>
                   <input
                     type="email"
                     name="email"
@@ -142,7 +171,7 @@ const Signup = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Password</label>
+                  <label className="text-sm text-gray-400 font-medium">Password</label>
                   <input
                     type="password"
                     name="password"
@@ -155,7 +184,7 @@ const Signup = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Confirm Password</label>
+                  <label className="text-sm text-gray-400 font-medium">Confirm Password</label>
                   <input
                     type="password"
                     name="confirmPassword"

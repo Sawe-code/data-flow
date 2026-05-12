@@ -60,11 +60,45 @@ const Login = () => {
     setErrors({});
 
     try {
-      console.log(formData);
+      const response = await fetch("http://localhost:8080/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setErrors({
+          general: data.error || "Login failed.",
+        });
+
+        return;
+      }
+
+      console.log(data);
+
+      // SAVE JWT TOKEN
+      localStorage.setItem("token", data.token);
+
+      // LOGIN STATE
       setIsLoggedIn(true);
+
+      // REDIRECT
       navigate("/dashboard");
+
     } catch (err) {
-      setErrors({ general: "Login failed." });
+      console.error(err);
+
+      setErrors({
+        general: "Server error. Please try again.",
+      });
+
     } finally {
       setLoading(false);
     }
@@ -75,7 +109,7 @@ const Login = () => {
       <section className="w-full max-w-5xl overflow-hidden rounded-[28px] border border-default bg-white dark:bg-secondary shadow-lg">
         <div className="grid md:grid-cols-2">
 
-          {/* LEFT SIDE */}
+
           <div className="bg-primary text-white flex flex-col items-center justify-center px-8 py-16 text-center md:rounded-r-[120px] shadow-lg">
             <h2 className="text-3xl font-bold">Welcome Back</h2>
 
@@ -95,7 +129,7 @@ const Login = () => {
             </Link>
           </div>
 
-          {/* RIGHT SIDE */}
+
           <div className="px-8 py-12 sm:px-12 md:px-14">
             <div className="mx-auto max-w-md">
               <h1 className="text-3xl text-muted font-bold text-center">Login</h1>
@@ -106,9 +140,9 @@ const Login = () => {
 
               <form onSubmit={handleSubmit} className="mt-10 space-y-5">
 
-                {/* EMAIL */}
+
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Email</label>
+                  <label className="text-sm text-gray-400 font-bold">Email</label>
                   <input
                     type="email"
                     name="email"
@@ -122,9 +156,9 @@ const Login = () => {
                   )}
                 </div>
 
-                {/* PASSWORD */}
+
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Password</label>
+                  <label className="text-sm text-gray-400 font-bold">Password</label>
                   <input
                     type="password"
                     name="password"
@@ -138,7 +172,7 @@ const Login = () => {
                   )}
                 </div>
 
-                {/* FORGOT */}
+
                 <div className="flex justify-end">
                   <Link
                     to="/forgot-password"
@@ -154,7 +188,7 @@ const Login = () => {
                   </p>
                 )}
 
-                {/* BUTTON */}
+
                 <button
                   type="submit"
                   disabled={loading || !isFormValid}
