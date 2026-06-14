@@ -1,0 +1,16 @@
+EmployeeID,Name,Age,Department,Email,Country,Salary,JoinDate
+EMP001,Brian Sawe,22,IT,brian@gmail.com,Kenya,75000,2024-01-15
+EMP002, Alice Johnson ,29,Finance,alice@gmail.com,Uganda,90000,2023-05-10
+EMP003,JOHN DOE,150,HR,john@gmail.com,Tanzania,60000,2022-11-01
+EMP004,Mary Smith,,Marketing,mary@gmail.com,Rwanda,85000,2024-03-01
+EMP005,Peter Brown,35,Sales,peter@gmail.com,Kenya,70000,2023-08-20
+EMP006,,28,Finance,noname@gmail.com,Uganda,65000,2022-07-11
+EMP007,Sarah Connor,19,IT,sarah@gmail.com,Kenya,55000,2025-01-10
+EMP008,Brian Sawe,22,IT,brian@gmail.com,Kenya,75000,2024-01-15
+EMP009,Tom Wilson,-5,Operations,tom@gmail.com,Tanzania,80000,2021-06-06
+EMP010,Grace Lee,130,HR,grace@gmail.com,Rwanda,95000,2020-02-02
+EMP011,Chris Evans,40,,cevans@gmail.com,Kenya,120000,2019-09-09
+EMP012,Alice Johnson,29,Finance,alice@gmail.com,Uganda,90000,2023-05-10
+EMP013,Kevin Hart,31,Finance,,Kenya,88000,2024-04-04
+EMP014,Lucy Green,26,IT,lucy@gmail.com,,72000,2023-12-12
+EMP015,Michael King,45,Management,mking@gmail.com,Kenya,,2018-01-01

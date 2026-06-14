@@ -1,0 +1,11 @@
+CustomerID,Name,Age,Gender,Country,Email,Phone,Membership,TotalPurchases
+C001,Brian Sawe,22,Male,Kenya,brian@gmail.com,0712345678,Gold,15
+C002,Alice Johnson,28,Female,Uganda,alice@gmail.com,0700000000,Silver,9
+C003,John Doe,150,Male,Tanzania,john@gmail.com,0755555555,Gold,25
+C004,Mary Smith,,Female,Rwanda,mary@gmail.com,0788888888,Bronze,3
+C005,,35,Male,Kenya,peter@gmail.com,0711111111,Silver,10
+C006,Lucy Green,19,Female,Kenya,lucy@gmail.com,,Gold,12
+C007,Kevin Hart,-10,Male,Uganda,kevin@gmail.com,0722222222,Silver,4
+C008,Brian Sawe,22,Male,Kenya,brian@gmail.com,0712345678,Gold,15
+C009,Grace Lee,130,Female,Rwanda,grace@gmail.com,0733333333,Gold,22
+C010,Chris Evans,40,Male,,cevans@gmail.com,0744444444,Platinum,30
