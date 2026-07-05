@@ -1,0 +1,3 @@
+./analysisRoutes.go
+./authRoutes.go
+./uploadRoutes.go

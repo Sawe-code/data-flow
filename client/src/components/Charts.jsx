@@ -233,7 +233,7 @@ const Charts = () => {
         {textProfiles.length > 0 && (
           <div className="mt-8 grid md:grid-cols-2 xl:grid-cols-3 gap-5">
             {textProfiles.slice(0, 6).map((profile) => (
-              <div key={profile.name} className="card">
+              <div key={profile.name} className="card overflow-hidden">
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <h3>{profile.name}</h3>

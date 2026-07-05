@@ -1,0 +1,4 @@
+./analysisController.go
+./authController.go
+./databaseConnectionController.go
+./uploadController.go

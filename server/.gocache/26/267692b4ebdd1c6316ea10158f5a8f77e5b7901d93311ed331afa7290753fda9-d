@@ -1,0 +1,4 @@
+./analysisRoutes.go
+./authRoutes.go
+./databaseConnectionRoutes.go
+./uploadRoutes.go

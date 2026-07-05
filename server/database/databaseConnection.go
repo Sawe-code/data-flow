@@ -65,6 +65,20 @@ func createTables() error {
 			created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 		);
 		`,
+		`
+		CREATE TABLE IF NOT EXISTS database_connections (
+			id INTEGER PRIMARY KEY AUTOINCREMENT,
+			user_id TEXT NOT NULL,
+			name TEXT NOT NULL,
+			driver TEXT NOT NULL,
+			host TEXT,
+			port TEXT,
+			database_name TEXT NOT NULL,
+			username TEXT,
+			password TEXT,
+			created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+		);
+		`,
 	}
 
 	for _, query := range queries {

@@ -33,6 +33,7 @@ func main() {
 	routes.AuthRoutes(router)
 	routes.UploadRoutes(router)
 	routes.AnalysisRoutes(router)
+	routes.DatabaseConnectionRoutes(router)
 
 	router.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{

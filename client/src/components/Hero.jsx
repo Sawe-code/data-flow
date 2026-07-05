@@ -16,8 +16,7 @@ const Hero = () => {
         </h1>
 
         <p className="mt-6 text-base md:text-lg text-muted">
-          Upload CSV OR Excel files and instantly clean, structure, and
-          visualize your data in seconds. No setup, no complexity.
+          Upload CSV or Excel files and turn them into clean visuals in seconds.
         </p>
 
         <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
@@ -28,10 +27,6 @@ const Hero = () => {
             Start For Free
           </button>
         </div>
-
-        <p className="mt-6 text-sm text-muted">
-          No signup required • Works instantly • Works with APIs, databases, and files
-        </p>
       </div>
     </section>
   );

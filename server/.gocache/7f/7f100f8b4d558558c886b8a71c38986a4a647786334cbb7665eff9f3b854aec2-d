@@ -1,0 +1,3 @@
+./analysisController.go
+./authController.go
+./uploadController.go
