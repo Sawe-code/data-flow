@@ -58,8 +58,8 @@ const Navbar = () => {
       <div
         className="
           container-custom
-          h-20
-          md:h-28
+          h-10
+          md:h-20
           flex
           items-center
           justify-between
