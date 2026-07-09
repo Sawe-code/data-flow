@@ -33,7 +33,7 @@ const Hero = () => {
 
       <div className="relative z-10 min-h-screen flex flex-col justify-between">
 
-        <div className="h-28" />
+        <div className="h-20 md:h-28" />
 
         <motion.div
           initial={{ opacity: 0, x: -120 }}
@@ -49,12 +49,13 @@ const Hero = () => {
               className="
                 uppercase
                 font-black
-                text-6xl
-                sm:text-7xl
-                md:text-8xl
-                lg:text-[9rem]
                 leading-[0.85]
                 tracking-tight
+                text-4xl
+                sm:text-5xl
+                md:text-6xl
+                lg:text-7xl
+                xl:text-8xl
               "
             >
               FROM RAW DATA.
@@ -64,13 +65,14 @@ const Hero = () => {
               className="
                 uppercase
                 font-black
-                text-6xl
-                sm:text-7xl
-                md:text-8xl
-                lg:text-[9rem]
                 leading-[0.85]
                 tracking-tight
                 text-transparent
+                text-4xl
+                sm:text-5xl
+                md:text-6xl
+                lg:text-7xl
+                xl:text-8xl
               "
               style={{
                 WebkitTextStroke:
@@ -97,10 +99,16 @@ const Hero = () => {
         >
           <p
             className="
-              max-w-2xl
+              max-w-xl
+              md:max-w-2xl
+              mx-auto
+              px-6
               text-center
-              text-lg
+              text-base
+              sm:text-lg
               md:text-xl
+              lg:text-2xl
+              xl:text-3xl
               leading-relaxed
             "
           >
