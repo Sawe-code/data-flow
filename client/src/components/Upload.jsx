@@ -3,6 +3,8 @@ import { AuthContext } from "../contexts/AuthContext";
 import { DataContext } from "../contexts/DataContext";
 import { apiFetch } from "../config/api";
 import { FileUp, FolderOpen } from "lucide-react";
+import { motion } from "framer-motion";
+import { Database, Link2 } from "lucide-react";
 
 const defaultDatabaseSetup = {
   name: "",
@@ -350,13 +352,16 @@ const Upload = () => {
               />
 
               <label htmlFor="fileUpload" className="cursor-pointer">
-                <div className="flex justify-center mb-4">
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="flex justify-center mb-4">
                   <FolderOpen
                     size={90}
                     className="text-yellow-400"
                     strokeWidth={2}
                   />
-                </div>
+                </motion.div>
 
                 <h3>Drag & Drop CSV or Excel Here</h3>
                 <p className="mt-2">

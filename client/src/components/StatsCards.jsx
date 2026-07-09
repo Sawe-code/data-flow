@@ -44,7 +44,7 @@ const StatsCards = () => {
   ];
 
   return (
-    <section className="section">
+    <section className="pt-0 pb-16">
       <div className="container-custom grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {stats.map((item) => (
           <div

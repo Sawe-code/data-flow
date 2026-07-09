@@ -4,13 +4,13 @@ import { DataContext } from "../contexts/DataContext";
 import { AuthContext } from "../contexts/AuthContext";
 import { apiFetch } from "../config/api";
 
-import Hero from "../components/Hero";
-import Upload from "../components/Upload";
+
 import StatsCards from "../components/StatsCards";
 import ChartOptions from "../components/ChartOptions";
 import Charts from "../components/Charts";
 import CleanedTable from "../components/CleanedTable";
 import InvalidTable from "../components/InvalidTable";
+import HeroTransition from "../components/HeroTransition";
 
 const Home = () => {
   const { analysisResult } = useContext(DataContext);
@@ -80,9 +80,7 @@ const Home = () => {
 
   return (
     <>
-      <Hero />
-
-      <Upload />
+      <HeroTransition />
 
       {analysisResult && (
         <>

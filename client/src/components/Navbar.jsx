@@ -1,12 +1,11 @@
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { AuthContext } from "../contexts/AuthContext";
 
 const Navbar = () => {
   const { isLoggedIn, logout } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
 
   const [dark, setDark] = useState(
     localStorage.getItem("theme") === "dark"
@@ -17,89 +16,81 @@ const Navbar = () => {
     localStorage.setItem("theme", dark ? "dark" : "light");
   }, [dark]);
 
-  const links = isLoggedIn
-    ? [
-        { name: "Home", path: "/" },
-        { name: "My Data", path: "/saved" },
-      ]
-    : [
-        { name: "Home", path: "/" },
-        { name: "Login", path: "/login" },
-      ];
+  const handleAuth = () => {
+    if (isLoggedIn) {
+      logout();
+      navigate("/");
+      return;
+    }
+
+    navigate("/login");
+  };
 
   return (
-    <header>
-      <div className="container-custom flex items-center justify-between h-16">
+    <header className="fixed top-0 left-0 right-0 z-50 transtion-all duration-500">
+      <div className="container-custom h-28 flex items-center justify-between">
+        <NavLink
+          to="/"
+          className="flex items-center gap-3 font-bold text-2xl"
+        >
+          <img
+            src="/icons/dataflow.png"
+            className="w-10 h-10 rounded-xl"
+          />
 
-        {/* LOGO */}
-        <NavLink to="/" className="flex items-center gap-2">
-          <img src="/icons/dataflow.png" className="h-8 w-8 rounded-md" />
-          <span className="font-bold text-lg text-gradient">DataFlow</span>
+          <span className="text-gradient">
+            DataFlow
+          </span>
         </NavLink>
 
-        {/* DESKTOP */}
-        <nav className="hidden md:flex gap-8">
-          {links.map((l) => (
-            <NavLink key={l.name} to={l.path} className="nav-link">
-              {l.name}
+        <div className="flex items-center gap-10">
+          <NavLink
+            to="/"
+            className="nav-link"
+          >
+            Home
+          </NavLink>
+
+          {isLoggedIn && (
+            <NavLink
+              to="/saved"
+              className="nav-link"
+            >
+              My Data
             </NavLink>
-          ))}
-        </nav>
+          )}
+        </div>
 
-        {/* RIGHT */}
-        <div className="flex items-center gap-3">
-
-          <button onClick={() => setDark(!dark)}>
-            {dark ? <Sun size={18} /> : <Moon size={18} />}
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => setDark(!dark)}
+            className="
+              h-11
+              w-11
+              rounded-full
+              border
+              border-default
+              glass
+              flex
+              items-center
+              justify-center
+            "
+          >
+            {dark ? (
+              <Sun size={18} />
+            ) : (
+              <Moon size={18} />
+            )}
           </button>
 
           <button
-            onClick={() => {
-              if (isLoggedIn) {
-                logout();
-                navigate("/");
-                return;
-              }
-
-              navigate("/signup");
-            }}
-            className="hidden md:block btn btn-primary"
+            onClick={handleAuth}
+            className="btn btn-primary"
           >
-            {isLoggedIn ? "Logout" : "Get Started"}
-          </button>
-
-          <button className="md:hidden" onClick={() => setOpen(!open)}>
-            {open ? <X /> : <Menu />}
+            {isLoggedIn ? "Logout" : "Sign In"}
           </button>
         </div>
       </div>
-
-      {/* MOBILE */}
-      {open && (
-        <div className="md:hidden px-6 pb-6 flex flex-col gap-4">
-          {links.map((l) => (
-            <NavLink key={l.name} to={l.path} onClick={() => setOpen(false)}>
-              {l.name}
-            </NavLink>
-          ))}
-
-          <button
-            onClick={() => {
-              if (isLoggedIn) {
-                logout();
-                navigate("/");
-                setOpen(false);
-                return;
-              }
-
-              navigate("/signup");
-            }}
-            className="btn btn-primary"
-          >
-            {isLoggedIn ? "Logout" : "Get Started"}
-          </button>
-        </div>
-      )}
     </header>
   );
 };
